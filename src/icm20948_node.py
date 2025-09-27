@@ -19,7 +19,8 @@ def icm20948_node():
     rate = rospy.Rate(100)
     rospy.loginfo(rospy.get_caller_id() + "  icm20948 node launched.")
 
-    IMU = qwiic_icm20948.QwiicIcm20948()
+   # IMU = qwiic_icm20948.QwiicIcm20948()
+    IMU = qwiic_icm20948.QwiicIcm20958(address=0x68) #
 
     while IMU.connected == False:
         message = "The Qwiic ICM20948 device isn't connected to the system. Please check your connection"
