@@ -7,7 +7,7 @@ project(ros_icm20948)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS rospy sensor_msgs std_msgs)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -101,7 +101,7 @@ find_package(catkin REQUIRED)
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ros_icm20948
-#  CATKIN_DEPENDS other_catkin_pkg
+  CATKIN_DEPENDS  rospy sensor_msgs std_msgs
 #  DEPENDS system_lib
 )
 
@@ -186,8 +186,11 @@ include_directories(
 #   # myfile1
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+#)
 
+install(PROGRAMS
+ scripts/icm20948_node.py DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
 #############
 ## Testing ##
 #############
